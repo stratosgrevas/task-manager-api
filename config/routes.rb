@@ -1,3 +1,5 @@
+require "api_version_constraint"
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
@@ -6,8 +8,10 @@ Rails.application.routes.draw do
   # api. e nesse caso é preciso criar essa rota em namespace.
   # Poderia ser uma pasta chamada ADMIN. E dentro dela teria controllers que seriam
   # para controlar coisas do amin.
-  namespace :api, defaults: { format: :json } do
-
+  namespace :api, defaults: { format: :json }, path: "/" do
+  	namespace :v1, path: "/", constraints: ApiVersionConstraint.new(version: 1, default: true) do
+  		resources :tasks
+  	end
   end
 end
 

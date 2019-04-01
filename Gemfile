@@ -25,6 +25,14 @@ gem 'puma', '~> 3.0'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Please add the following to your Gemfile to avoid polling for changes:
+#    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+#  Please add the following to your Gemfile to avoid polling for changes:
+#    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+# A server is already running. Check D:/rails_projects/task-manager-rails/tmp/pids/server.pid.
+gem 'wdm', '>= 0.1.0'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

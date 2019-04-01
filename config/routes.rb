@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   # api. e nesse caso é preciso criar essa rota em namespace.
   # Poderia ser uma pasta chamada ADMIN. E dentro dela teria controllers que seriam
   # para controlar coisas do amin.
-  namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: "/" do
+  namespace :api, defaults: { format: :json } do
 
   end
 end
 
+############
+#
+# CONFIGURAÇÃO PARA SUBDOMINIO NO SERVIDOR (LOCAL NÃO FUNCIONA!!!):
+# 
 # api = www.site.com/api/tasks
 # tasks = nome do controller
 # constraints (restrições)
@@ -19,3 +23,13 @@ end
 # como o path = "/", então o subdominio = api.site.com/tasks
 # 
 # trabalhar com subdominio é melhor para trabalhar com os DNS do servidor.
+# 
+# OBS: api.localhost:3000 (não funciona!!!)
+# 
+# essa alteração, fica num arquivo que só pode ser alterado como administrador!!!
+# 
+# namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: "/" do
+# end
+# 
+# 
+############# 

@@ -32,6 +32,9 @@ gem 'puma', '~> 3.0'
 # A server is already running. Check D:/rails_projects/task-manager-rails/tmp/pids/server.pid.
 gem 'wdm', '>= 0.1.0'
 
+# para criar os models
+gem 'devise'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

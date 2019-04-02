@@ -32,6 +32,8 @@ gem 'puma', '~> 3.0'
 # A server is already running. Check D:/rails_projects/task-manager-rails/tmp/pids/server.pid.
 gem 'wdm', '>= 0.1.0'
 
+#gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+
 # para criar os models
 gem 'devise'
 
@@ -54,6 +56,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-commands-rspec' # acelera tarefas no terminal
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

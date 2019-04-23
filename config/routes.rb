@@ -1,7 +1,11 @@
 require "api_version_constraint"
 
 Rails.application.routes.draw do
-  devise_for :users
+  
+  # devise_for :users, cria algumas rotas. Muito útil para criar
+  # rotas de usuários.
+  # devise_for :users (pode dar conflito com as rotas dos testes)
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   # namespace é para agrupar e organizar melhor os nossos controllers
@@ -11,7 +15,7 @@ Rails.application.routes.draw do
   # para controlar coisas do amin.
   namespace :api, defaults: { format: :json }, path: "/" do
   	namespace :v1, path: "/", constraints: ApiVersionConstraint.new(version: 1, default: true) do
-      resources :tasks
+      #resources :tasks
   		resources :users, only: [:show]
   	end
   end

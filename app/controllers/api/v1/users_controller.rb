@@ -16,6 +16,8 @@ class Api::V1::UsersController < ApplicationController
 		if user.save
 			render json: user, status: 201
 		else
+			# byebug - debug para testar durante a execução dos testes
+			# do RSPEC ...
 			render json: { errors: user.errors }, status: 422
 		end
 

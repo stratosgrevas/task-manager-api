@@ -7,5 +7,5 @@ class User < ApplicationRecord
     # atributo virtual
 	# attr_accessor :name
 
-	# validates_presence_of :name
+	# validates_presence_of :name, :age, :photo
 end

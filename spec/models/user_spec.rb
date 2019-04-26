@@ -23,4 +23,40 @@ RSpec.describe User, type: :model do
   			expect(user.info).to eq("#{user.email} - #{user.created_at} - Token: abc123xyzTOKEN")
   		end
   	end
+
+  	describe '#generate_authentication_token!' do
+  		it 'generates a unique auth token' do
+			# criando um MOCK
+  			allow(Devise).to receive(:friendly_token).and_return('abc123xyzTOKEN')
+  			user.generate_authentication_token!
+
+  			expect(user.auth_token).to eq('abc123xyzTOKEN')
+  		end
+
+  		it 'generates another auth token when the current auth token already has been taken' do
+  			# criei um usuário no sistema com o token = abc123tokenxyz
+  			# a função CREATE é do FACTORY_GIRL que gera dados de usuários
+  			# e salva no banco de dados de teste!
+  			# existing_user = create(:user, auth_token: 'abc123tokenxyz')
+  			
+  			# allow é um MOCK. 
+  			# Nesse caso, quando for rodado o friendly_token, 
+  			# na primeira tentativa o retorno receberá "abc123tokenxyz"
+  			# e caso exista um token já salvo no banco, eu faço uma segunda tentativa
+  			# passando o valor do token = "abcXYZ123456789"
+  			# allow(Devise).to receive(:friendly_token).and_return('abc123tokenxyz','abcXYZ123456789')
+
+  			# MARCADOR DO VIDEO = filtro before_create e teste do token duplicado!
+  			allow(Devise).to receive(:friendly_token).and_return('abc123tokenxyz','abc123tokenxyz','abcXYZ123456789')
+  			existing_user = create(:user)
+  			
+  			# fazendo a chamda do método do model.
+  			user.generate_authentication_token!
+
+  			# expero que o token do usuário corrente, não seja 
+  			# igual a um token de usuário já existente no banco.
+  			expect(user.auth_token).not_to eq(existing_user.auth_token)
+  		end
+  	end
+
 end

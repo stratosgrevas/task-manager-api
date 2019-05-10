@@ -42,7 +42,7 @@ RSpec.configure do |config|
   # carregando o FactoryGirl nos testes
   config.include FactoryGirl::Syntax::Methods
   # carregando o RequestSpecHelper para os testes do tipo REQUEST!
-  config.include RequestSpecHelper, type: :request
+  config.include RequestSpecHelper #, type: :request
 
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

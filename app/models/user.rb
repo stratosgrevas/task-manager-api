@@ -14,6 +14,8 @@ class User < ApplicationRecord
 	# MARCADOR DO VIDEO = filtro before_create e teste do token duplicado!
 	before_create :generate_authentication_token!
 
+	has_many :tasks, dependent: :destroy
+
 	def info
 		"#{email} - #{created_at} - Token: #{Devise.friendly_token}"
 	end

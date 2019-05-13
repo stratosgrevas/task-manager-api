@@ -22,8 +22,16 @@ Rails.application.routes.draw do
   # Poderia ser uma pasta chamada ADMIN. E dentro dela teria controllers que seriam
   # para controlar coisas do amin.
   namespace :api, defaults: { format: :json }, path: '/' do
-  	namespace :v1, path: '/', constraints: ApiVersionConstraint.new(version: 1, default: true) do
+  	namespace :v1, path: '/', constraints: ApiVersionConstraint.new(version: 1) do
       #resources :tasks
+      resources :users, only: [:show, :create, :update, :destroy]
+      resources :sessions, only: [:create, :destroy]
+      resources :tasks, only: [:index, :show, :create, :update, :destroy]
+    end
+
+    # sempre manter a ultima versão embaixo na lista. e também 
+    # lembrar de definir o DEFAULT para a versão corrente.
+    namespace :v2, path: '/', constraints: ApiVersionConstraint.new(version: 2, default: true) do
   		resources :users, only: [:show, :create, :update, :destroy]
       resources :sessions, only: [:create, :destroy]
       resources :tasks, only: [:index, :show, :create, :update, :destroy]

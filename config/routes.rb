@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       resources :tasks, only: [:index, :show, :create, :update, :destroy]
     end
 
-    # sempre manter a ultima versão embaixo na lista. e também 
+    # sempre manter A VERSÃO DEFAULT embaixo (no final) na lista. e também 
     # lembrar de definir o DEFAULT para a versão corrente.
     namespace :v2, path: '/', constraints: ApiVersionConstraint.new(version: 2, default: true) do
   		resources :users, only: [:show, :create, :update, :destroy]

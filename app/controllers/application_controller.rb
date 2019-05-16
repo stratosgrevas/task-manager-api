@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::API
-    include DeviseTokenAuth::Concerns::SetUserByToken
-	include Authenticable
-
+    
 	# Exemplo de um current user
 	# def current_user
 	# 	User.find(1)

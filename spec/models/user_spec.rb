@@ -7,7 +7,25 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:tasks).dependent(:destroy) }
   	
   	it { is_expected.to validate_presence_of(:email) }
-  	it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+
+    # === Após a instalação da GEM 'devise_token_auth' ===
+    # 
+    # Ao executar a migration, deu erro no migrate de conflito com campo.
+    # para isso, tive que executar 'bundle exec rake db:rollback' em todas as tabelas existentes.
+    # Então executei novamente 'bundle exec rake db:migrate' para subir todas as tabelas para o 
+    # banco de desenvolvimento.
+    # 
+    # Após executar a migration, um erro foi apresentado para esse teste e
+    # esse erro foi corrigido pelo professor no link:
+    # 
+    # https://www.udemy.com/rails-angular-nativescript-apis-e-apicativos-android-ios-e-web/learn/lecture/7825018#questions/3913588
+    # 
+    # Abaixo o teste antigo:
+    # 
+    # it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+    # 
+    it { is_expected.to validate_uniqueness_of(:email).case_insensitive.scoped_to(:provider) }
+
   	it { is_expected.to validate_confirmation_of(:password) }
   	it { is_expected.to allow_value('costa@nonato.com').for(:email) }
   	it { is_expected.to validate_uniqueness_of(:auth_token) }

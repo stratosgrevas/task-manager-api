@@ -1,7 +1,7 @@
 require "api_version_constraint"
 
 Rails.application.routes.draw do
-
+  
   # devise_for :users, cria algumas rotas. Muito útil para criar
   # rotas de usuários.
   # devise_for :users (pode dar conflito com as rotas dos testes)
@@ -32,6 +32,12 @@ Rails.application.routes.draw do
     # sempre manter A VERSÃO DEFAULT embaixo (no final) na lista. e também 
     # lembrar de definir o DEFAULT para a versão corrente.
     namespace :v2, path: '/', constraints: ApiVersionConstraint.new(version: 2, default: true) do
+      
+      # criado pelo devise_token_auth.
+      # inserido na linha inicial dessa classe.
+      # mas vamos colocar dentro das rotas da versão 2
+      mount_devise_token_auth_for 'User', at: 'auth'
+
   		resources :users, only: [:show, :create, :update, :destroy]
       resources :sessions, only: [:create, :destroy]
       resources :tasks, only: [:index, :show, :create, :update, :destroy]

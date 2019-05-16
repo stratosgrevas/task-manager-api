@@ -71,3 +71,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_model_serializers', '0.10.9'
 
 gem 'ransack'
+
+gem 'omniauth'
+
+gem 'devise_token_auth'
+
+# instalando a gem 'devise_token_auth' no projeto
+# User = nome do model
+# auth = nome do prefixo da rota. Pode ser qualquer nome
+# Esses dois parametros estão seguindo o padrão da gem
+# User auth
+# rails g devise_token_auth:install User auth

@@ -23,7 +23,7 @@ gem 'puma', '~> 3.0'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 # Please add the following to your Gemfile to avoid polling for changes:
 #    gem 'wdm', '>= 0.1.0' if Gem.win_platform?

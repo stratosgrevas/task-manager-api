@@ -82,3 +82,6 @@ gem 'devise_token_auth'
 # Esses dois parametros estão seguindo o padrão da gem
 # User auth
 # rails g devise_token_auth:install User auth
+
+# tradução do idimoa de mensagens do sistema
+gem 'rails-i18n', '~> 5.1'

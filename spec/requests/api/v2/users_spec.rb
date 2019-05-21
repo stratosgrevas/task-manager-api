@@ -5,8 +5,6 @@ RSpec.describe 'Users API', type: :request do
 	# dados esse objeto.
 	let!(:user) { create(:user) }
 
-	#let!(:user_id) { user.id }
-
 	let!(:auth_data) { user.create_new_auth_token }
 
 	let(:headers) do

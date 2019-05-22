@@ -47,7 +47,7 @@ end
 
 ############
 #
-# CONFIGURAÇÃO PARA SUBDOMINIO NO SERVIDOR (LOCAL NÃO FUNCIONA!!!):
+# CONFIGURAÇÃO PARA SUBDOMINIO NO SERVIDOR ( SERVIDOR LOCAL NÃO FUNCIONA!!! ):
 # 
 # api = www.site.com/api/tasks
 # tasks = nome do controller
